@@ -5,7 +5,9 @@ function App() {
     return (
         <div>
             Hello
-            <Smooth />
+            <Smooth.div borderRadius={100}
+                cornerSmoothing={'100%'}
+                className="example"></Smooth.div>
         </div>
     )
 }

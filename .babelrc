@@ -1,13 +1,13 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "modules": false
       }
     ],
-    "stage-0",
-    "react"
+    "@babel/typescript",
+    "@babel/preset-react"
   ],
-  "plugins": ["external-helpers"]
+  "plugins": []
 }
