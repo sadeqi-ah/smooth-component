@@ -59,10 +59,7 @@ let useStyles = createUseStyles({
  */
 function createComponent(node: string) {
   const Component = React.forwardRef<HTMLElement, SmoothProps>(
-    (
-      { borderRadius, cornerSmoothing, className, children, name, ...props },
-      ref
-    ) => {
+    ({ borderRadius, cornerSmoothing, className, children, ...props }, ref) => {
       const [state, setstate] = useState({
         width: 0,
         height: 0,
@@ -114,11 +111,17 @@ function createComponent(node: string) {
 
       return (
         <>
-          {React.createElement(node, {
-            ...props,
-            className: `${classes['smooth-cwe']} ${className ? className : ''}`,
-            ref: rootRef,
-          })}
+          {React.createElement(
+            node,
+            {
+              ...props,
+              className: `${classes['smooth-cwe']} ${
+                className ? className : ''
+              }`,
+              ref: rootRef,
+            },
+            children
+          )}
           {/* <Node
               {...props}
               className={`${classes['smooth-cwe']} ${
