@@ -7,7 +7,8 @@
   "jsnext:main": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "rollup -c",
@@ -22,6 +23,11 @@
   "bugs": {
     "url": "https://github.com/sadeqi-ah/smooth-component/issues"
   },
+  "keywords": [
+    "react",
+    "reactJs",
+    "react-component"
+  ],
   "homepage": "https://github.com/sadeqi-ah/smooth-component#readme",
   "devDependencies": {
     "@babel/core": "^7.12.10",
