@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -35,6 +36,7 @@
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
+    "@types/react-jss": "^10.0.0",
     "@types/resize-observer-browser": "^0.1.5",
     "react-jss": "^10.5.1",
     "rollup": "^2.38.3",

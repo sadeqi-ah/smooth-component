@@ -5,7 +5,7 @@ import useSyncedRef from './useSyncedRef'
 import { createUseStyles } from 'react-jss'
 
 // All container that are supported.
-const containers = ['div', 'p'] as const
+const containers = ['div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const
 
 // All elements that are supported.
 const elements = ['img'] as const
@@ -122,15 +122,6 @@ function createComponent(node: string) {
             },
             children
           )}
-          {/* <Node
-              {...props}
-              className={`${classes['smooth-cwe']} ${
-                className ? className : ''
-              }`}
-              ref={rootRef}
-            >
-              {children}
-            </Node> */}
           <ClipPath id={id.current} d={path} />
         </>
       )
