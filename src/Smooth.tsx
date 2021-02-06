@@ -2,10 +2,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import ClipPath from './ClipPath'
 import { pathCreator } from './pathCreator'
 import useSyncedRef from './useSyncedRef'
-import { createUseStyles } from 'react-jss'
+// import { createUseStyles } from 'react-jss'
 
 // All container that are supported.
-const containers = ['div', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const
+const containers = [
+  'div',
+  'p',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'span',
+] as const
 
 // All elements that are supported.
 const elements = ['img'] as const
@@ -26,11 +36,19 @@ const Smooth: React.FC & SmoothComposition = ({ children }) => (
   <React.Fragment>{children}</React.Fragment>
 )
 
-export type SmoothProps = {
-  [key: string]: any
+export type SmoothOpt = {
   cornerSmoothing: number | string
   borderRadius: number | string
 }
+
+export interface SmoothProps extends SmoothOpt {
+  [key: string]: any
+}
+// export type SmoothProps = {
+//   [key: string]: any
+//   cornerSmoothing: number | string
+//   borderRadius: number | string
+// }
 
 /**
  * create all containers.
@@ -46,12 +64,12 @@ elements.forEach((element: string) => {
   Smooth[element as Elements] = createComponent(element)
 })
 
-// add clip path to element
-let useStyles = createUseStyles({
-  'smooth-cwe': {
-    clipPath: (id) => `url(#${id})`,
-  },
-})
+// // add clip path to element
+// let useStyles = createUseStyles({
+//   'smooth-cwe': {
+//     clipPath: (id) => `url(#${id})`,
+//   },
+// })
 
 /**
  * component creator.
@@ -59,7 +77,10 @@ let useStyles = createUseStyles({
  */
 function createComponent(node: string) {
   const Component = React.forwardRef<HTMLElement, SmoothProps>(
-    ({ borderRadius, cornerSmoothing, className, children, ...props }, ref) => {
+    (
+      { borderRadius, cornerSmoothing, className, children, style, ...props },
+      ref
+    ) => {
       const [state, setstate] = useState({
         width: 0,
         height: 0,
@@ -107,7 +128,7 @@ function createComponent(node: string) {
         }
       }, [state.width, state.height])
 
-      const classes = useStyles(id.current)
+      // const classes = useStyles(id.current)
 
       return (
         <>
@@ -115,9 +136,11 @@ function createComponent(node: string) {
             node,
             {
               ...props,
-              className: `${classes['smooth-cwe']} ${
-                className ? className : ''
-              }`,
+              style: {
+                ...style,
+                clipPath: `url(#${id.current})`,
+              },
+              className: `${className ? className : ''}`,
               ref: rootRef,
             },
             children
