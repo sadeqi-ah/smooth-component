@@ -1,6 +1,6 @@
 # Smooth Component
 
-A react component to implement container or element with smoothing corners.
+A react component to make container or element with smoothing corners.
 
 ![image](image.jpg)
 
